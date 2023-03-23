@@ -41,6 +41,6 @@ test_num = 'your_personal_phone_number'
 ```
 
 # Changelog
-**1.2** - Updated readme
+**1.21** - Updated readme
 
 **Second version** -  version uses a separate "auth" file for login and has duckduckgo answers and search in one.
