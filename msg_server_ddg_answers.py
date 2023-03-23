@@ -10,8 +10,8 @@ phone_number = 'a valid cel or landline number (not textnow number)'
 username = 'textnow username'
 
 # Way 1. Include connect.sid and csrf cookie in the constructor
-client = pytextnow.Client(username, sid_cookie = sid, csrf_cookie = csrf)
-#client.auth_reset()
+client = pytextnow.Client(username, sid_cookie=sid, csrf_cookie=csrf)
+# client.auth_reset()
 
 client.send_sms(phone_number, 'server started') 
 
@@ -20,11 +20,9 @@ while True:
     new_messages = client.get_unread_messages()
     for message in new_messages:
         message.mark_as_read()
-        print(message) # message.content or message.number
+        print(message)  # message.content or message.number
         results = ddg_answers(message.content, related=False)
         client.send_sms(message.number, str(results))
-        print (results)
-        print ()
-        print (datetime.timestamp)
-
-
+        print(results)
+        print()
+        print(datetime.timestamp)
