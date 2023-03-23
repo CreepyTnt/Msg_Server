@@ -41,8 +41,10 @@ test_num = 'your_personal_phone_number'
 ```
 
 # Changelog
-**1.23** - Code cleanup, delete unnecessary __init __
+**1.2.7** - Large amount of error correction and bug fixes in msg_server
 
-**1.22** - Updated readme
+**1.2.3** - Code cleanup, delete unnecessary __init __
+
+**1.2.2** - Updated readme
 
 **Second version** -  version uses a separate "auth" file for login and has duckduckgo answers and search in one.
