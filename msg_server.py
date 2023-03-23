@@ -9,14 +9,15 @@ from datetime import datetime
 import Custom_Message_Protocols as sms
 import msg_auth
 
-client = pytextnow.Client(msg_auth.Username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
+client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
 
 client.send_sms(msg_auth.test_num, 'Server started.')
 
 while True:
-    time.sleep(3)
-    new_messages = client.get_unread_messages()
-    for message in new_messages:
+
+    messages = client.get_unread_messages()
+    for message in messages:
+
         message.mark_as_read()
         print(f"{message.number}: {message.content}")
 
@@ -28,7 +29,7 @@ while True:
 
         # get duckduckgo responses
 
-        results = ddg(message.content, region='us-en', safesearch='moderate', time='y', max_results=5)
+        results = ddg("message.content", region='us-en', safesearch='moderate', time='y', max_results=5)
         answer = ddg_answers(message.content, related=False)
 
         # send simple search
@@ -36,7 +37,7 @@ while True:
         print(answer[0]['text'])
         sms.send_sms(answer[0]['text'], message)
 
-        # send details search
+        # send detailed search
 
         sms.send_sms(results[0]['title'] + '--------' + results[0]['body'] + '--------' + results[0]['href'], message)
         time.sleep(3)

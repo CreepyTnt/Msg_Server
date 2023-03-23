@@ -2,18 +2,14 @@ import pytextnow
 from duckduckgo_search import ddg_answers
 import time
 from datetime import datetime
+import msg_auth
 
-
-sid = 'connect_sid'
-csrf = '_csrf'
-phone_number = 'a valid cel or landline number (not textnow number)'
-username = 'textnow username'
 
 # Way 1. Include connect.sid and csrf cookie in the constructor
-client = pytextnow.Client(username, sid_cookie=sid, csrf_cookie=csrf)
+client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
 # client.auth_reset()
 
-client.send_sms(phone_number, 'server started') 
+client.send_sms(msg_auth.test_num, 'server started')
 
 while True:
     time.sleep(3)

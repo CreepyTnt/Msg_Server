@@ -32,7 +32,7 @@ your TextNow username, and the number that is going to be used for testing (your
 
 The following code shows where the credentials go:
 ```python
-Username = 'your_textnow_username'
+username = 'your_textnow_username'
 sid = 'connect_sid_cookie'
 csrf = 'csrf_token'
 
@@ -41,6 +41,8 @@ test_num = 'your_personal_phone_number'
 ```
 
 # Changelog
+**1.2.8** - Minor bug fixes
+
 **1.2.7** - Large amount of error correction and bug fixes in msg_server
 
 **1.2.3** - Code cleanup, delete unnecessary __init __
