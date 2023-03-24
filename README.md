@@ -45,6 +45,8 @@ After you have done this, you may run one of the files. If you are not sure whic
 implements all features at once.
 
 # Changelog
+**1.3.1** - Added !help command to main.py
+
 **1.3** - Added main.py. Includes all features in one file, and uses commands like !search
 
 **1.2.8** - Minor bug fixes

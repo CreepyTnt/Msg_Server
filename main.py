@@ -64,9 +64,12 @@ while True:
             if str.lower(message.content) == "!search":
                 answers(message)
 
+            elif str.lower(message.content) == "!help":
+                message.send_sms("Current commands: !search, !help.")
+
             else:
                 valid = 1
-                message.send_sms(f"Invalid command '{message.content}'.")
+                message.send_sms(f"Invalid command '{message.content}'. Say !help for a list of commands.")
 
         else:
             valid = 0
