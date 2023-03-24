@@ -3,6 +3,7 @@ from duckduckgo_search import ddg
 import time
 from datetime import datetime
 import msg_auth
+import Custom_Message_Protocols as sms
 
 
 client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
@@ -19,7 +20,7 @@ while True:
 
         print(message)  # message.content or message.number
         results = ddg(message.content, region='us-en', safesearch='moderate', time='y', max_results=3)
-        client.send_sms(message.number, str(results))
+        sms.send_sms(str(results), message)
         print(results)
         
         
