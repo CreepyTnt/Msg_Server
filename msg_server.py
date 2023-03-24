@@ -14,7 +14,7 @@ client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cooki
 client.send_sms(msg_auth.test_num, 'Server started.')
 
 while True:
-
+    time.sleep(3)
     messages = client.get_unread_messages()
     for message in messages:
 

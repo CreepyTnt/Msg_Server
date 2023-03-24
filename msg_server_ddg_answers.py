@@ -3,13 +3,12 @@ from duckduckgo_search import ddg_answers
 import time
 from datetime import datetime
 import msg_auth
+import Custom_Message_Protocols as sms
 
 
-# Way 1. Include connect.sid and csrf cookie in the constructor
 client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
-# client.auth_reset()
 
-client.send_sms(msg_auth.test_num, 'server started')
+client.send_sms(msg_auth.test_num, 'Server started.')
 
 while True:
     time.sleep(3)
@@ -18,7 +17,7 @@ while True:
         message.mark_as_read()
         print(message)  # message.content or message.number
         results = ddg_answers(message.content, related=False)
-        client.send_sms(message.number, str(results))
+        sms.send_sms(str(results), message)
         print(results)
         print()
         print(datetime.timestamp)
