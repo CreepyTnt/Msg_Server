@@ -5,6 +5,7 @@ and discord.py client may also be added soon.
 * "msg_server_ddg_answers.py" is the server that searches things using duckduckgo answers.
 * "msg_server_ddg_search.py" is the server software that searches thing with a standard duckduckgo search.
 * "msg_server.py" is a revised server software that combines answers and search.
+* "main.py" is a recently added file that implements all features in one place.
 
 
 ***Only run them one at a time, they are totally different server scripts and should not be used at the same time.***
@@ -40,7 +41,12 @@ csrf = 'csrf_token'
 test_num = 'your_personal_phone_number'
 ```
 
+After you have done this, you may run one of the files. If you are not sure which one to run, do main.py as that one
+implements all features at once.
+
 # Changelog
+**1.3** - Added main.py. Includes all features in one file, and uses commands like !search
+
 **1.2.8** - Minor bug fixes
 
 **1.2.7** - Large amount of error correction and bug fixes in msg_server
