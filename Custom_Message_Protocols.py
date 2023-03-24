@@ -4,6 +4,7 @@ import time
 # This is used when a long message is possible to be sent
 # also used cuz pytextnow does not like certain characters
 def send_sms(content, msg):
+
     sms_limit = 550
 
     # pytextnow does not support these characters
