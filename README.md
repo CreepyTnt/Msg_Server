@@ -1,6 +1,6 @@
 # Overview
-If you want to host the server yourself here is everything you need to know. A website downloader, music downloader,
-and discord client may also be added soon.
+If you want to host the server yourself, here is everything you need to know. A website downloader, music downloader,
+and discord.py client may also be added soon.
 
 * "msg_server_ddg_answers.py" is the server that searches things using duckduckgo answers.
 * "msg_server_ddg_search.py" is the server software that searches thing with a standard duckduckgo search.
