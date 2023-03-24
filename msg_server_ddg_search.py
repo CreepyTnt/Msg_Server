@@ -8,7 +8,7 @@ import msg_auth
 client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
 
 
-client.send_sms(msg_auth.test_num, 'server started')
+client.send_sms(msg_auth.test_num, 'Server started.')
 
 
 while True:
