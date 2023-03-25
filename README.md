@@ -10,6 +10,10 @@ and discord.py client may also be added soon.
 
 ***Only run them one at a time, they are totally different server scripts and should not be used at the same time.***
 
+Note: A feature of this service is that it can get "any" web page on the internet. While this is technically true, a
+lot of websites don't like bots, so some won't work as expected. Selenium is a future possibility, as it can get html
+data without being caught as well as take screenshots of the page, which will also eliminate the need for convertApi.
+
 
 
 # Requirements:
