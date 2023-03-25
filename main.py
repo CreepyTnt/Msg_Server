@@ -5,6 +5,7 @@ import msg_auth
 import time
 import requests
 import convertapi
+import os
 
 
 def answers(msg):
@@ -53,6 +54,9 @@ def webpage(msg):
     }, from_format='html').save_files('file2.jpg')
 
     message.send_mms("file2.jpg")
+
+    os.remove("file.html")
+    os.remove("file2.jpg")
 
 
 
