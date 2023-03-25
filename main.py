@@ -91,7 +91,7 @@ while True:
             elif str.lower(message.content) == "!help":
                 message.send_sms("Current commands: !search, !help.")
 
-            elif str.lower(message.content) == "!web":
+            elif str.lower(message.content) == "!web" or str.lower(message.content) == "!webpage":
                 webpage(message)
 
             else:
