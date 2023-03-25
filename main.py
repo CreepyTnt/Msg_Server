@@ -3,6 +3,8 @@ from duckduckgo_search import ddg_answers, ddg
 import Custom_Message_Protocols as sms
 import msg_auth
 import time
+import requests
+import convertapi
 
 
 def answers(msg):
@@ -47,6 +49,8 @@ client.send_sms(msg_auth.test_num, 'Server started.')
 # 2 = valid
 valid = 0
 
+convertapi_key = msg_auth.convertapi_key
+
 
 
 while True:
@@ -66,6 +70,19 @@ while True:
 
             elif str.lower(message.content) == "!help":
                 message.send_sms("Current commands: !search, !help.")
+
+            elif str.lower(message.content) == "!web":
+                r = requests.get("https://google.com")
+                with open("file.html", "w") as f:
+                    f.write(r.text)
+
+
+                convertapi.api_secret = convertapi_key
+                convertapi.convert('jpg', {
+                    'File': 'file.html'
+                }, from_format='html').save_files('file2.jpg')
+
+                message.send_mms("file2.jpg")
 
             else:
                 valid = 1
