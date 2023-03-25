@@ -40,6 +40,22 @@ def answers(msg):
         msg.send_sms("There was an error: INDEX_ERROR. This is most likely caused because of no response from DuckDuckGo.")
 
 
+def webpage(msg):
+    user_response = sms.ask("Respond with the url of your webpage. Remember to put https:// before it.", msg, default="https://google.com")
+
+    r = requests.get(user_response)
+    with open("file.html", "w") as f:
+        f.write(r.text)
+
+    convertapi.api_secret = convertapi_key
+    convertapi.convert('jpg', {
+        'File': 'file.html'
+    }, from_format='html').save_files('file2.jpg')
+
+    message.send_mms("file2.jpg")
+
+
+
 
 client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
 client.send_sms(msg_auth.test_num, 'Server started.')
@@ -72,17 +88,7 @@ while True:
                 message.send_sms("Current commands: !search, !help.")
 
             elif str.lower(message.content) == "!web":
-                r = requests.get("https://google.com")
-                with open("file.html", "w") as f:
-                    f.write(r.text)
-
-
-                convertapi.api_secret = convertapi_key
-                convertapi.convert('jpg', {
-                    'File': 'file.html'
-                }, from_format='html').save_files('file2.jpg')
-
-                message.send_mms("file2.jpg")
+                webpage(message)
 
             else:
                 valid = 1
