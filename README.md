@@ -49,6 +49,8 @@ After you have done this, you may run one of the files. If you are not sure whic
 implements all features at once.
 
 # Changelog
+**1.3.4** - Now uses selenium.
+
 **1.3.3** - Deletes the files after they are sent. The !webpage command is now stable.
 
 **1.3.23** - Can now get any web page you specify

@@ -1,5 +1,0 @@
-username = ''
-sid = ''
-csrf = ''
-test_num = ''
-convertapi_key = ''
