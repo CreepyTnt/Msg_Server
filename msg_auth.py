@@ -4,4 +4,4 @@ csrf = ''
 test_num = ''
 
 convertapi_key = ''
-use_selenium = False
+use_selenium = True
