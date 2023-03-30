@@ -1,4 +1,6 @@
+import convertapi
 import pytextnow
+import requests
 from duckduckgo_search import ddg_answers, ddg
 import Custom_Message_Protocols as sms
 import msg_auth
@@ -43,20 +45,33 @@ def answers(msg):
 def webpage(msg):
     user_response = sms.ask("Respond with the url of your webpage. Remember to put https:// before it.", msg, default="https://google.com")
 
+    if msg_auth.use_selenium is True:
 
+        driver = webdriver.Chrome()
 
-    driver = webdriver.Chrome()
+        driver.get(user_response)
+        with open("file.png", 'wb') as f:
+            f.write(driver.get_screenshot_as_png())
 
-    driver.get(user_response)
-    with open("file.png", 'wb') as f:
-        f.write(driver.get_screenshot_as_png())
+        msg.send_mms("file.png")
 
-    msg.send_mms("file.png")
+        os.remove("file.png")
 
+    else:
 
-    os.remove("file.png")
+        r = requests.get(user_response)
+        with open("file.html", "w") as f:
+            f.write(r.text)
 
+        convertapi.api_secret = convertapi_key
+        convertapi.convert('jpg', {
+            'File': 'file.html'
+        }, from_format='html').save_files('file2.jpg')
 
+        message.send_mms("file2.jpg")
+
+        os.remove("file2.jpg")
+        os.remove('file.html')
 
 
 client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
@@ -105,6 +120,3 @@ while True:
             print(f"{message.number}: {message.content} (invalid-notified user)")
         else:
             print(f"{message.number}: {message.content} (invalid)")
-
-
-

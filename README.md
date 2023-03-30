@@ -18,18 +18,35 @@ data without being caught as well as take screenshots of the page, which will al
 
 # Requirements:
 ### Modules:
+*Note: Selenium and convertAPI can be used separately at your choice. See more on this below*
 ```
 pip install pytextnow
 pip install duckduckgo_search
+pip install selenium
 ```
 ### Accounts:
 You will need the following accounts:
 
 * [TextNow](https://www.textnow.com/)
+* [ConvertAPI (optional)](https://www.convertapi.com/)
+# Selenium and ConvertAPI:
+This code has the ability to get html data from web pages. To do this, you can use convertAPI or Selenium. Here is the
+different benefits of the two:
+
+* Selenium can render JavaScript and CSS data, whereas Requests cannot. Selenium also does not get caught as a bot, and
+can take screenshots of the page. The only downside to using Selenium is the setup, which may be difficult, especially
+if running code on a server.
+
+
+* ConvertAPI is the alternative to Selenium. The downside is it cannot render JavaScript or CSS, will get caught as a
+bot, and you have a limit. ConvertAPI is used to convert the HTML data to a .png file. This is done becuase TextNow
+cannot send HTML files.
+
+If you want to use selenium, set 'use_selenium' in msg_auth.py to True. Otherwise, set to False. (Shown below)
 
 # Setup:
 
-You will need to input your credentials into the *msg_auth.py* file. You will need the connect_sid and csrf cookie,
+You will need to input your TextNow credentials into the *msg_auth.py* file. You will need the connect_sid and csrf cookie,
 your TextNow username, and the number that is going to be used for testing (your main number).
 
 * [How to get connect.sid and csrf cookie](https://github.com/leogomezz4t/PyTextNow_API/raw/main/get_cookie.mp4)
@@ -44,11 +61,21 @@ csrf = 'csrf_token'
 # this is your main phone number, not your TextNow number.
 test_num = 'your_personal_phone_number'
 ```
+**_ONLY IF_** you are using ConvertAPI will you need to use this key as well:
+```python
+# ConvertAPI key
+convertapi_key = 'your_key'
+
+# change this if you want to use ConvertAPI
+use_selenium = True
+```
 
 After you have done this, you may run one of the files. If you are not sure which one to run, do main.py as that one
 implements all features at once.
 
 # Changelog
+**1.3.42** - You can now choose whether to use Selenium or ConvertAPI.
+
 **1.3.4** - Now uses selenium.
 
 **1.3.3** - Deletes the files after they are sent. The !webpage command is now stable.
