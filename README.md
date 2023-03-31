@@ -74,6 +74,8 @@ After you have done this, you may run one of the files. If you are not sure whic
 implements all features at once.
 
 # Changelog
+**1.3.44** - Now uses Selenium headless mode.
+
 **1.3.42** - You can now choose whether to use Selenium or ConvertAPI.
 
 **1.3.4** - Now uses selenium.

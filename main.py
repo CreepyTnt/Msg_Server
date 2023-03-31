@@ -2,6 +2,7 @@ import convertapi
 import pytextnow
 import requests
 from duckduckgo_search import ddg_answers, ddg
+from selenium.webdriver.chrome.options import Options
 import Custom_Message_Protocols as sms
 import msg_auth
 import time
@@ -47,7 +48,15 @@ def webpage(msg):
 
     if msg_auth.use_selenium is True:
 
-        driver = webdriver.Chrome()
+        chrome_options = Options()
+
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-startup-window")
+
+        window_size = "1920,1080"
+        chrome_options.add_argument(f"--window-size={window_size}")
+
+        driver = webdriver.Chrome(options=chrome_options)
 
         driver.get(user_response)
         with open("file.png", 'wb') as f:
@@ -76,6 +85,7 @@ def webpage(msg):
 
 client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cookie=msg_auth.csrf)
 client.send_sms(msg_auth.test_num, 'Server started.')
+print("Server started.")
 
 # 0 = not valid
 # 1 = invalid command
@@ -99,12 +109,18 @@ while True:
         if str.lower(message.content)[0] == "!":
 
             if str.lower(message.content) == "!search":
+
+                print(f"{message.number}: {message.content}")
                 answers(message)
 
             elif str.lower(message.content) == "!help":
+
+                print(f"{message.number}: {message.content}")
                 message.send_sms("Current commands: !search, !help.")
 
             elif str.lower(message.content) == "!web" or str.lower(message.content) == "!webpage":
+
+                print(f"{message.number}: {message.content}")
                 webpage(message)
 
             else:
@@ -114,9 +130,8 @@ while True:
         else:
             valid = 0
 
-        if valid == 2:
-            print(f"{message.number}: {message.content}")
-        elif valid == 1:
+
+        if valid == 1:
             print(f"{message.number}: {message.content} (invalid-notified user)")
-        else:
+        elif valid == 0:
             print(f"{message.number}: {message.content} (invalid)")
