@@ -1,13 +1,10 @@
 # Overview
-An sms group chat and music downloader are in development. A website downloader and discord client may also be added soon.
+A simple way to do basic web browsing through sms. The current features are simple web search and a website downloader.
 
-* "msg_server_ddg_answers.py" is the server that searches things using duckduckgo answers.
-* "msg_server_ddg_search.py" is the server software that searches thing with a standard duckduckgo search.
-* "msg_server.py" is a revised server software that combines answers and search.
-* "main.py" is a recently added file that implements all features in one place.
+* "msg_server.py" is an older version that has duckduckgo answers and search.
+* "main.py" is a recently added file that implements all features in one place such as new commands: !help and !webpage.
 
-
-***Only run them one at a time, they are totally different server scripts and should not be used at the same time.***
+***Do not run main.py and msg_server.py at the same time.***
 
 Note: A feature of this service is that it can get "any" web page on the internet. While this is technically true, a
 lot of websites don't like bots, so some won't work as expected. Selenium is a future possibility, as it can get html
