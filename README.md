@@ -1,6 +1,5 @@
 # Overview
-If you want to host the server yourself, here is everything you need to know. A website downloader, music downloader,
-and discord.py client may also be added soon.
+An sms group chat and music downloader are in development. A website downloader and discord client may also be added soon.
 
 * "msg_server_ddg_answers.py" is the server that searches things using duckduckgo answers.
 * "msg_server_ddg_search.py" is the server software that searches thing with a standard duckduckgo search.
@@ -99,3 +98,9 @@ implements all features at once.
 **1.2.2** - Updated readme
 
 **Second version** -  version uses a separate "auth" file for login and has duckduckgo answers and search in one.
+
+
+#Coming Soon
+- group sms
+- music downloader
+- discord
