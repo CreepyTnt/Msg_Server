@@ -100,7 +100,7 @@ implements all features at once.
 **Second version** -  version uses a separate "auth" file for login and has duckduckgo answers and search in one.
 
 
-#Coming Soon
+# Coming Soon:
 - group sms
 - music downloader
 - discord
