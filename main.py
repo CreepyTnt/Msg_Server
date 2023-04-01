@@ -1,7 +1,8 @@
 import convertapi
 import pytextnow
 import requests
-from duckduckgo_search import ddg_answers, ddg
+from duckduckgo_search import ddg
+from duckduckgo_search import ddg_answers
 from selenium.webdriver.chrome.options import Options
 import Custom_Message_Protocols as sms
 import msg_auth
@@ -9,18 +10,31 @@ import time
 import os
 from selenium import webdriver
 
+def search(query):
+    results = ddg(message.content, region='us-en', safesearch='moderate', time='y', max_results=5)
+
+    answer = ddg_answers(message.content, related=False)
+
+    try:
+        client.send_sms(message.number, answer[0]['text'])
+
+        time.sleep(3)
+            
+    except:
+        print ('no ddg answer')
+        
+
+    client.send_sms(message.number, results[0]['title'] + '--------' + results[0]['body'] + '--------' + results[0]['href'])
+    time.sleep(3)
+    client.send_sms(message.number, results[1]['title'] + '--------' + results[1]['body'] + '--------' + results[1]['href'])
+    time.sleep(3)
+    client.send_sms(message.number, results[2]['title'] + '--------' + results[2]['body'] + '--------' + results[2]['href'])
+
+
 
 def answers(msg):
 
     user_response = sms.ask("Input prompt.", msg)
-
-    # if validators.url(message.content):
-    #     html_downloader.download(message.content, 'C:/users/jenni/desktop/python/msg_thing/webpage.py')
-    #     client.send_mms(message.number, 'C:/users/jenni/desktop/python/msg_thing/webpage.html')
-    #     print ('sent a file')
-    #     client.send_sms(message.number, 'Change the ".png" to ".html" to view')
-
-    # get duckduckgo responses
 
     results = ddg(user_response, region='us-en', safesearch='moderate', time='y', max_results=3)
     answer = ddg_answers(user_response, related=False)
@@ -87,7 +101,7 @@ client = pytextnow.Client(msg_auth.username, sid_cookie=msg_auth.sid, csrf_cooki
 client.send_sms(msg_auth.test_num, 'Server started.')
 print("Server started.")
 
-# 0 = not valid
+# 0 = search
 # 1 = invalid command
 # 2 = valid
 valid = 0
@@ -116,7 +130,7 @@ while True:
             elif str.lower(message.content) == "!help":
 
                 print(f"{message.number}: {message.content}")
-                message.send_sms("Current commands: !search, !help.")
+                message.send_sms("Current commands: !webpage and !help. To simply search, just send you query without !.")
 
             elif str.lower(message.content) == "!web" or str.lower(message.content) == "!webpage":
 
@@ -130,8 +144,12 @@ while True:
         else:
             valid = 0
 
+            print(f"{message.number}: {message.content}")
+            search(message.content)
+
+
 
         if valid == 1:
             print(f"{message.number}: {message.content} (invalid-notified user)")
         elif valid == 0:
-            print(f"{message.number}: {message.content} (invalid)")
+            print(f"{message.number}: {message.content} (search query)")
