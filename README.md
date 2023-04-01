@@ -73,6 +73,8 @@ After you have done this, you may run one of the files. If you are not sure whic
 implements all features at once.
 
 # Changelog
+**1.4.0** = Searching now works the same way they did before v1.3.
+
 **1.3.44** - Now uses Selenium headless mode.
 
 **1.3.42** - You can now choose whether to use Selenium or ConvertAPI.
