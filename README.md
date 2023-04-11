@@ -100,6 +100,7 @@ implements all features at once.
 
 
 # Coming Soon:
-- group sms
 - music downloader
-- discord
+
+#Group chats
+A new group chat sms server can be found here: https://github.com/CreepyTnt/Group-sms-server
