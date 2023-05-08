@@ -1,4 +1,7 @@
 # Overview
+
+# ***This project is broken due to changes in TextNow's api***
+
 A simple way to do basic web browsing through sms. The current features are simple web search and a website downloader.
 
 * "msg_server.py" is an older version that has duckduckgo answers and search.
